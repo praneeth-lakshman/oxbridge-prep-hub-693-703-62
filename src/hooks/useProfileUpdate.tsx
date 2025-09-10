@@ -13,6 +13,7 @@ interface TempTutorData {
     exams: string[];
   };
   exam_rates: Record<string, number>;
+  expires?: number;
 }
 
 export const useProfileUpdate = (user: User | null) => {
@@ -28,6 +29,12 @@ export const useProfileUpdate = (user: User | null) => {
 
       try {
         const tempData: TempTutorData = JSON.parse(tempDataString);
+        
+        // Check if data has expired (security measure)
+        if (tempData.expires && Date.now() > tempData.expires) {
+          localStorage.removeItem('tempTutorData');
+          return;
+        }
         
         // Update the profile with tutor information
         const { error } = await supabase

@@ -155,19 +155,26 @@ const SignupForm = ({ onSwitchToLogin }: SignupFormProps) => {
           });
 
         if (profileError) {
-          // Still store in localStorage as backup
+          // Still store in localStorage as backup with security measures
           if (values.userType === 'tutor') {
-            localStorage.setItem('tempTutorData', JSON.stringify({
+            const secureData = {
               user_type: values.userType,
-              name: values.firstName,
+              name: values.firstName?.substring(0, 100), // Limit length
               university: `University of ${values.university}`,
               degree: values.degree,
               year: `${values.year} Year`,
               subjects: {
-                exams: values.exams
+                exams: values.exams?.slice(0, 10) // Limit array size
               },
               exam_rates: values.examRates,
-            }));
+              expires: Date.now() + (24 * 60 * 60 * 1000) // 24 hour expiry
+            };
+            
+            try {
+              localStorage.setItem('tempTutorData', JSON.stringify(secureData));
+            } catch (error) {
+              console.error('Failed to store tutor data securely:', error);
+            }
           }
         }
       }

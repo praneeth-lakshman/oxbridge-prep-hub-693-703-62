@@ -38,6 +38,24 @@ const LoginForm = ({ onSwitchToSignup }: LoginFormProps) => {
   const handleLogin = async (values: z.infer<typeof loginSchema>) => {
     setLoading(true);
 
+    // Basic rate limiting for login attempts
+    const loginKey = `login_${values.email}`;
+    const rateLimitStore = sessionStorage.getItem(loginKey);
+    const now = Date.now();
+    
+    if (rateLimitStore) {
+      const { attempts, resetTime } = JSON.parse(rateLimitStore);
+      if (attempts >= 5 && now < resetTime) {
+        toast({
+          title: "Too many attempts",
+          description: "Please wait 15 minutes before trying again.",
+          variant: "destructive",
+        });
+        setLoading(false);
+        return;
+      }
+    }
+
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email: values.email,
@@ -51,8 +69,18 @@ const LoginForm = ({ onSwitchToSignup }: LoginFormProps) => {
         description: "You have successfully logged in.",
       });
       
+      // Clear any failed login attempts on success
+      sessionStorage.removeItem(loginKey);
       navigate('/');
     } catch (error) {
+      // Track failed login attempts
+      const currentAttempts = rateLimitStore ? JSON.parse(rateLimitStore).attempts : 0;
+      const newResetTime = now + (15 * 60 * 1000); // 15 minutes
+      sessionStorage.setItem(loginKey, JSON.stringify({
+        attempts: currentAttempts + 1,
+        resetTime: newResetTime
+      }));
+      
       toast({
         title: "Login failed",
         description: error instanceof Error ? error.message : "An unexpected error occurred",

@@ -74,25 +74,33 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
     return null
   }
 
+  // Sanitize CSS values to prevent XSS
+  const sanitizeCSS = (value: string): string => {
+    return value.replace(/[<>'"\\]/g, '').substring(0, 50);
+  };
+
+  const cssContent = Object.entries(THEMES)
+    .map(([theme, prefix]) => {
+      const themeStyles = colorConfig
+        .map(([key, itemConfig]) => {
+          const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
+          if (!color || typeof color !== 'string') return null;
+          
+          const sanitizedColor = sanitizeCSS(color);
+          const sanitizedKey = sanitizeCSS(key);
+          return `  --color-${sanitizedKey}: ${sanitizedColor};`;
+        })
+        .filter(Boolean)
+        .join('\n');
+      
+      return `${prefix} [data-chart=${id}] {\n${themeStyles}\n}`;
+    })
+    .join('\n');
+
   return (
     <style
       dangerouslySetInnerHTML={{
-        __html: Object.entries(THEMES)
-          .map(
-            ([theme, prefix]) => `
-${prefix} [data-chart=${id}] {
-${colorConfig
-  .map(([key, itemConfig]) => {
-    const color =
-      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
-      itemConfig.color
-    return color ? `  --color-${key}: ${color};` : null
-  })
-  .join("\n")}
-}
-`
-          )
-          .join("\n"),
+        __html: cssContent
       }}
     />
   )
