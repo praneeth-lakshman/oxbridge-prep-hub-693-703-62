@@ -55,8 +55,8 @@ const About = () => {
               <h3 className="text-xl font-semibold text-foreground mb-2">Pranav</h3>
               <p className="text-primary font-medium mb-3">Co-Founder & CMO</p>
               <p className="text-muted-foreground text-sm">
-                Imperial College Engineering student with expertise in ESAT preparation and 
-                engineering admissions. Specializes in breaking down complex engineering concepts into 
+                Imperial College Engineering student with expertise in ESAT preparation. 
+                Specializes in breaking down complex engineering concepts into 
                 accessible learning experiences for aspiring university students.
               </p>
             </CardContent>
