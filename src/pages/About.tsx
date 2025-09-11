@@ -35,8 +35,12 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 animate-fade-in-delay-400">
           <Card className="h-full hover:shadow-elegant transition-all duration-300 hover:scale-[1.03] animate-fade-in" style={{ animationDelay: '0.1s' }}>
             <CardContent className="p-6 text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/60 rounded-full mx-auto mb-4 flex items-center justify-content-center animate-scale-in">
-                <Users className="h-10 w-10 text-white" />
+              <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden animate-scale-in">
+                <img 
+                  src="/lovable-uploads/e6733da1-9910-4902-9af8-7558885a27be.png" 
+                  alt="Vincent - Co-Founder & CEO"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Vincent</h3>
               <p className="text-primary font-medium mb-3">Co-Founder & CEO</p>
