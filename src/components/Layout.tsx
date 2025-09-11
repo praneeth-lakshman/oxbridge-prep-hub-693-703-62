@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import Navigation from './Navigation';
+import MobileDebugger from './MobileDebugger';
 
 const Layout = () => {
   return (
@@ -8,6 +9,7 @@ const Layout = () => {
       <main>
         <Outlet />
       </main>
+      <MobileDebugger />
     </div>
   );
 };

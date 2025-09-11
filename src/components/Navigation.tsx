@@ -183,16 +183,20 @@ const Navigation = () => {
           <div className="hidden md:flex items-center space-x-8">
             {/* Exams Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary text-muted-foreground no-underline">
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus:text-primary active:text-primary text-muted-foreground no-underline touch-manipulation">
                 Exams
                 <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
+              <DropdownMenuContent 
+                className="bg-background border border-border shadow-lg z-[60] min-w-[200px]"
+                sideOffset={8}
+                align="start"
+              >
                 {examItems.map((item) => (
                   <DropdownMenuItem key={item.name} asChild>
                     <Link 
                       to={item.path}
-                      className="w-full px-3 py-2 text-sm hover:bg-muted text-foreground no-underline"
+                      className="w-full px-3 py-3 text-sm hover:bg-muted active:bg-muted text-foreground no-underline touch-manipulation"
                     >
                       {item.name}
                     </Link>
@@ -203,16 +207,20 @@ const Navigation = () => {
 
             {/* Past Papers Dropdown */}
             <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary text-muted-foreground no-underline">
+              <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary focus:text-primary active:text-primary text-muted-foreground no-underline touch-manipulation">
                 Past Papers
                 <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-background border border-border shadow-lg z-50">
+              <DropdownMenuContent 
+                className="bg-background border border-border shadow-lg z-[60] min-w-[200px]"
+                sideOffset={8}
+                align="start"
+              >
                 {pastPapersItems.map((item) => (
                   <DropdownMenuItem key={item.name} asChild>
                     <Link 
                       to={item.path}
-                      className="w-full px-3 py-2 text-sm hover:bg-muted text-foreground no-underline"
+                      className="w-full px-3 py-3 text-sm hover:bg-muted active:bg-muted text-foreground no-underline touch-manipulation"
                     >
                       {item.name}
                     </Link>
@@ -290,7 +298,7 @@ const Navigation = () => {
             {/* Tutor Inbox Section (when logged in) */}
             {user && (
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+                <DropdownMenuTrigger className="flex items-center gap-2 hover:opacity-80 active:opacity-80 transition-opacity touch-manipulation">
                   <div className="flex items-center gap-2">
                     <MessageCircle className="h-5 w-5 text-primary" />
                     <span className="text-sm font-medium text-foreground">Profile</span>
@@ -302,7 +310,11 @@ const Navigation = () => {
                   </div>
                   <ChevronDown className="h-4 w-4 text-muted-foreground" />
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuContent 
+                  align="end" 
+                  className="w-48 z-[60] bg-background border border-border shadow-lg"
+                  sideOffset={8}
+                >
                   <div className="px-2 py-1.5 text-sm text-muted-foreground">
                     {user.email}
                   </div>
@@ -352,6 +364,8 @@ const Navigation = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsOpen(!isOpen)}
+              className="touch-manipulation"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>

@@ -111,6 +111,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    /* Improve mobile touch handling */
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   /* Accessible link styling - exclude navigation links */
@@ -122,5 +127,28 @@ All colors MUST be HSL.
 @layer utilities {
   .rotate-y-180 {
     transform: rotateY(180deg);
+  }
+  
+  /* Mobile-specific utilities for better touch handling */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Prevent iOS zoom on input focus */
+  @media screen and (max-width: 768px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    select {
+      font-size: 16px !important;
+    }
+  }
+  
+  /* Fix for iOS Safari viewport height issues */
+  .min-h-screen-mobile {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
   }
 }
