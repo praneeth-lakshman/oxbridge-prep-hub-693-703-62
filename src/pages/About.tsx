@@ -56,7 +56,8 @@ const About = () => {
               <p className="text-primary font-medium mb-3">Co-Founder & CMO</p>
               <p className="text-muted-foreground text-sm">
                 Imperial College Engineering student with expertise in ESAT preparation and 
-                science admissions. Passionate about making simple engineering concepts complex to himself.
+                engineering admissions. Specializes in breaking down complex engineering concepts into 
+                accessible learning experiences for aspiring university students.
               </p>
             </CardContent>
           </Card>
