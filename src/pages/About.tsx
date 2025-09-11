@@ -105,7 +105,7 @@ const About = () => {
             <div className="text-left">
               <h3 className="text-xl font-semibold text-foreground mb-3">Continuous Progress</h3>
               <p className="text-muted-foreground">
-                Regular assessments and feedback ensure you're making steady progress 
+                Regular feedback ensures you're making steady progress 
                 toward your academic goals.
               </p>
             </div>
