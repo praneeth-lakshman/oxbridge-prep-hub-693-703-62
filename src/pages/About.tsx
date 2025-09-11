@@ -41,8 +41,8 @@ const About = () => {
               <h3 className="text-xl font-semibold text-foreground mb-2">Vincent</h3>
               <p className="text-primary font-medium mb-3">Co-Founder & CEO</p>
               <p className="text-muted-foreground text-sm">
-                Oxford Mathematics student specializing in TMUA and MAT preparation. Expert in 
-                mathematical reasoning and problem-solving techniques with recent firsthand admissions experience.
+                Mathematics undergraduate at the University of Oxford with first-hand experience of the TMUA, 
+                MAT, and STEP entrance examinations. Committed to helping students build confidence and succeed in their own exam preparation.
               </p>
             </CardContent>
           </Card>
