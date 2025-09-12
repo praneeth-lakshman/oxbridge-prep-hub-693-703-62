@@ -46,7 +46,7 @@ const signupSchema = z.object({
 const universities = [
   'Oxford',
   'Cambridge', 
-  'Imperial',
+  'Imperial College London',
   'LSE'
 ];
 
