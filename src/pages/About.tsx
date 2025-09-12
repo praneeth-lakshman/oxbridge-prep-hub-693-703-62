@@ -53,8 +53,12 @@ const About = () => {
 
           <Card className="h-full hover:shadow-elegant transition-all duration-300 hover:scale-[1.03] animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <CardContent className="p-6 text-center">
-              <div className="w-20 h-20 bg-gradient-to-br from-secondary to-secondary/60 rounded-full mx-auto mb-4 flex items-center justify-center animate-scale-in">
-                <GraduationCap className="h-10 w-10 text-white" />
+              <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden animate-scale-in">
+                <img 
+                  src="/lovable-uploads/f88f3efb-361c-46de-8c4f-8289d63b2012.png" 
+                  alt="Pranav - Co-Founder & CMO"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <h3 className="text-xl font-semibold text-foreground mb-2">Pranav</h3>
               <p className="text-primary font-medium mb-3">Co-Founder & CMO</p>
