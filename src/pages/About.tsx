@@ -132,7 +132,13 @@ const About = () => {
               </p>
               <div className="flex justify-center">
                 <Button size="lg" variant="secondary" asChild>
-                  <Link to="/team" className="no-underline">Book Now</Link>
+                  <Link 
+                    to="/team" 
+                    className="no-underline"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  >
+                    Book Now
+                  </Link>
                 </Button>
               </div>
             </CardContent>

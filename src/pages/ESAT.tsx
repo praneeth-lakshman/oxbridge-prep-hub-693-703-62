@@ -259,7 +259,13 @@ const ESAT = () => {
               </p>
               <div className="flex justify-center animate-fade-in-delay-400">
                 <Button size="lg" variant="secondary" asChild className="hover:scale-105 transition-transform duration-200">
-                  <Link to="/team#esat" className="no-underline">Book Now</Link>
+                  <Link 
+                    to="/team#esat" 
+                    className="no-underline"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  >
+                    Book Now
+                  </Link>
                 </Button>
               </div>
             </CardContent>
