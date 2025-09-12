@@ -55,7 +55,7 @@ const About = () => {
             <CardContent className="p-6 text-center">
               <div className="w-20 h-20 rounded-full mx-auto mb-4 overflow-hidden animate-scale-in">
                 <img 
-                  src="/lovable-uploads/4afba298-e1b3-4fa5-8f7e-b01451d41edf.png" 
+                  src="/lovable-uploads/20df6e6a-f8bd-443e-91be-aa41d7d31ca6.png" 
                   alt="Pranav - Co-Founder & CMO"
                   className="w-full h-full object-cover"
                 />
