@@ -528,7 +528,7 @@ const Team = () => {
             Meet Our Expert Tutors
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Our tutors are current students at Cambridge and Imperial who have successfully navigated 
+            Our tutors are current students at the top UK universities who have successfully navigated 
             the admissions process and are passionate about helping you achieve your goals.
           </p>
         </div>
