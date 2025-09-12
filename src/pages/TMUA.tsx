@@ -72,7 +72,7 @@ const TMUA = () => {
                 </div>
                 <div className="flex items-center gap-2 animate-fade-in hover:bg-muted/10 transition-colors duration-200 rounded p-2" style={{ animationDelay: '0.2s' }}>
                   <Star className="h-4 w-4 text-yellow-500 fill-current shrink-0" />
-                  <span className="text-sm">Imperial College - Computer Science, Mathematics, Economics, Finance and Data Science</span>
+                  <span className="text-sm">Imperial College London - Computer Science, Mathematics, Economics, Finance and Data Science</span>
                 </div>
                 <div className="flex items-center gap-2 animate-fade-in hover:bg-muted/10 transition-colors duration-200 rounded p-2" style={{ animationDelay: '0.25s' }}>
                   <Star className="h-4 w-4 text-yellow-500 fill-current shrink-0" />
