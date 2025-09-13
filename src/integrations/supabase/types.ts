@@ -135,6 +135,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          account_status: string | null
           charges_enabled: boolean | null
           created_at: string
           degree: string | null
@@ -151,6 +152,7 @@ export type Database = {
           year: string | null
         }
         Insert: {
+          account_status?: string | null
           charges_enabled?: boolean | null
           created_at?: string
           degree?: string | null
@@ -167,6 +169,7 @@ export type Database = {
           year?: string | null
         }
         Update: {
+          account_status?: string | null
           charges_enabled?: boolean | null
           created_at?: string
           degree?: string | null
