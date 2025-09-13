@@ -143,17 +143,17 @@ const TMUAPastPapers = () => {
                 <CardContent className="pt-6">
                   <div className="space-y-3">
                     {yearData.papers.map((paper, paperIndex) => (
-                       <div key={paperIndex} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors duration-300">
+                       <div key={paperIndex} className="flex flex-col sm:flex-row sm:items-center sm:justify-between p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors duration-300 gap-3">
                         <div className="flex items-center gap-3">
-                          <FileText className="h-4 w-4 text-blue-600" />
+                          <FileText className="h-4 w-4 text-blue-600 flex-shrink-0" />
                           <span className="font-medium text-foreground">{paper.name}</span>
                         </div>
-                        <Button size="sm" variant="outline" asChild className="hover:scale-105 transition-transform duration-200">
+                        <Button size="sm" variant="outline" asChild className="w-full sm:w-auto hover:scale-105 transition-transform duration-200">
                           <a 
                             href={paper.url} 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            className="no-underline flex items-center gap-2"
+                            className="no-underline flex items-center justify-center gap-2"
                           >
                             <Download className="h-4 w-4" />
                             Download
@@ -177,11 +177,11 @@ const TMUAPastPapers = () => {
                 Past papers are just the beginning. Get personalized guidance from Cambridge students 
                 who have successfully passed the TMUA and gained admission to top universities.
               </p>
-              <div className="flex justify-center gap-4">
-                <Button size="lg" variant="secondary" asChild className="hover:scale-105 transition-transform duration-200">
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto hover:scale-105 transition-transform duration-200">
                   <Link to="/team#tmua" className="no-underline">Book TMUA Tutoring</Link>
                 </Button>
-                <Button size="lg" variant="secondary" asChild className="hover:scale-105 transition-transform duration-200">
+                <Button size="lg" variant="secondary" asChild className="w-full sm:w-auto hover:scale-105 transition-transform duration-200">
                   <Link 
                     to="/tmua" 
                     className="no-underline"
