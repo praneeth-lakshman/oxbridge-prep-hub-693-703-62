@@ -42,14 +42,8 @@ const Team = () => {
           return;
         }
 
-        // Transform database data to match component format and filter out paused accounts
-        const transformedTutors = profiles
-          ?.filter(profile => {
-            // Only show active tutors (default to active if account_status doesn't exist)
-            const accountStatus = (profile as any).account_status || 'active';
-            return accountStatus === 'active';
-          })
-          ?.map(profile => {
+        // Transform database data to match component format
+        const transformedTutors = profiles?.map(profile => {
           let specialties: string[] = [];
           
           // Handle subjects data structure safely
@@ -70,7 +64,8 @@ const Team = () => {
             course: profile.degree || 'Course',
             year: profile.year || 'Year',
             specialties,
-            examRates: profile.exam_rates || {}
+            examRates: profile.exam_rates || {},
+            account_status: (profile as any).account_status || 'active'
           };
         }) || [];
 
@@ -375,20 +370,30 @@ const Team = () => {
           
           {/* Action Buttons */}
           <div className="flex gap-3">
-            <Button 
-              asChild
-              className="flex-1 text-white hover:text-white hover:scale-105 transition-transform duration-200"
-              style={{ color: 'white' }}
-            >
-              <Link 
-                to={`/chat/${member.id}?service=${sectionId}`}
-                className="text-white hover:text-white no-underline flex items-center"
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            {member.account_status === 'paused' ? (
+              <Button 
+                disabled
+                className="flex-1 opacity-50 cursor-not-allowed"
               >
                 <MessageSquare className="h-4 w-4 mr-2" />
-                Start Chat
-              </Link>
-            </Button>
+                Chat Unavailable
+              </Button>
+            ) : (
+              <Button 
+                asChild
+                className="flex-1 text-white hover:text-white hover:scale-105 transition-transform duration-200"
+                style={{ color: 'white' }}
+              >
+                <Link 
+                  to={`/chat/${member.id}?service=${sectionId}`}
+                  className="text-white hover:text-white no-underline flex items-center"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                >
+                  <MessageSquare className="h-4 w-4 mr-2" />
+                  Start Chat
+                </Link>
+              </Button>
+            )}
             
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

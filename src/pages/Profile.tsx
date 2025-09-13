@@ -15,6 +15,7 @@ import { useToast } from '@/hooks/use-toast';
 import Inbox from '@/components/Inbox';
 import { StripeConnectOnboarding } from '@/components/StripeConnectOnboarding';
 import { StripeConnectDashboard } from '@/components/StripeConnectDashboard';
+import { AccountStatusToggle } from '@/components/AccountStatusToggle';
 
 interface UserProfile {
   id: string;
@@ -470,24 +471,15 @@ const Profile = () => {
                         Edit Profile
                       </Button>
 
-                      <Button 
-                        variant={profile?.account_status === 'paused' ? "default" : "secondary"}
-                        className="w-full"
-                        onClick={handlePauseReactivateAccount}
-                        disabled={pausing}
-                      >
-                        {profile?.account_status === 'paused' ? (
-                          <>
-                            <Play className="h-4 w-4 mr-2" />
-                            {pausing ? 'Reactivating...' : 'Reactivate Account'}
-                          </>
-                        ) : (
-                          <>
-                            <Pause className="h-4 w-4 mr-2" />
-                            {pausing ? 'Pausing...' : 'Pause Account'}
-                          </>
-                        )}
-                      </Button>
+                      <div className="p-6">
+                        <AccountStatusToggle 
+                          userId={user.id}
+                          currentStatus={profile?.account_status || 'active'}
+                          onStatusChange={(newStatus) => {
+                            setProfile(prev => prev ? { ...prev, account_status: newStatus } : null);
+                          }}
+                        />
+                      </div>
 
                       <AlertDialog>
                         <AlertDialogTrigger asChild>
